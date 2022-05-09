@@ -28,8 +28,8 @@ function AddProductForm({ onAddProduct }) {
 		<Card>
 			<form className={styles.form} onSubmit={submitHandler}>
 				<p className={styles.control}>
-					<label htmlFor='image'>Product image</label>
-					<input type='file' required id='image' ref={imageInputRef} />
+					<label htmlFor='image'>Product image url</label>
+					<input type='url' required id='image' ref={imageInputRef} />
 				</p>
 				<p className={styles.control}>
 					<label htmlFor='name'>Product name</label>

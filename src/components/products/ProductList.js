@@ -9,9 +9,9 @@ function ProductList(props) {
 				<ProductItem
 					key={product.id}
 					id={product.id}
-					image={product.product_image_md}
-					name={product.product_name}
-					price={product.product_price}
+					image={product.image}
+					name={product.name}
+					price={product.price}
 				/>
 			))}
 		</ul>
