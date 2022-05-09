@@ -8,7 +8,7 @@ function AddProductForm({ onAddProduct }) {
 	const nameInputRef = useRef()
 	const priceInputRef = useRef()
 
-	function submitHandler(event) {
+	function handleSubmit(event) {
 		event.preventDefault()
 
 		const enteredImage = imageInputRef.current.value
@@ -26,7 +26,7 @@ function AddProductForm({ onAddProduct }) {
 
 	return (
 		<Card>
-			<form className={styles.form} onSubmit={submitHandler}>
+			<form className={styles.form} onSubmit={handleSubmit}>
 				<p className={styles.control}>
 					<label htmlFor='image'>Product image url</label>
 					<input type='url' required id='image' ref={imageInputRef} />

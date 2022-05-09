@@ -27,8 +27,6 @@ function AllProducts() {
 					products.push(product)
 				}
 
-				console.log(products)
-
 				setIsLoading(false)
 				setLoadedProducts(products)
 			})
