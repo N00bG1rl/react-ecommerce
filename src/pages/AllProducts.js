@@ -1,36 +1,9 @@
-import { useState, useEffect } from 'react'
-
+import { useContext } from 'react'
+import ProductContext from '../store/products-context'
 import ProductList from '../components/products/ProductList'
 
 function AllProducts() {
-	const [isLoading, setIsLoading] = useState(true)
-	const [loadedProducts, setLoadedProducts] = useState([])
-
-	useEffect(() => {
-		setIsLoading(true)
-
-		fetch(
-			'https://react-ecommerce-4c48d-default-rtdb.europe-west1.firebasedatabase.app/products.json'
-		)
-			.then(res => {
-				return res.json()
-			})
-			.then(data => {
-				const products = []
-
-				for (const key in data) {
-					const product = {
-						id: key,
-						...data[key],
-					}
-
-					products.push(product)
-				}
-
-				setIsLoading(false)
-				setLoadedProducts(products)
-			})
-	}, [])
+	const { isLoading, products } = useContext(ProductContext)
 
 	if (isLoading) {
 		return (
@@ -40,10 +13,18 @@ function AllProducts() {
 		)
 	}
 
+	if (!products.length) {
+		return (
+			<section>
+				<p>No products jet.</p>
+			</section>
+		)
+	}
+
 	return (
 		<section>
 			<h1>All products</h1>
-			<ProductList products={loadedProducts} />
+			<ProductList products={products} />
 		</section>
 	)
 }
