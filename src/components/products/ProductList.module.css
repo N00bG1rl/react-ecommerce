@@ -1,0 +1,8 @@
+.productList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	max-inline-size: 1200px;
+	margin-inline: auto;
+	padding: 0;
+}

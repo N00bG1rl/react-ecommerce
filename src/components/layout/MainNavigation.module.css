@@ -18,12 +18,12 @@
 	justify-content: space-between;
 }
 
-.logo {
-	order: 2;
-}
-
 .styles.firstNavItem {
 	order: 1;
+}
+
+.logo {
+	order: 2;
 }
 
 .lastNavItem {
@@ -32,16 +32,39 @@
 
 .header a {
 	text-decoration: none;
-	font-size: 1.5rem;
+	text-transform: uppercase;
+	font-size: 0.8rem;
 	color: #052945;
-	transition: 0.2s ease-in;
+	transition: 0.5s ease-in-out;
+	position: relative;
+}
+
+.header li a::after {
+	display: block;
+	position: absolute;
+	left: 30px;
+	top: 50%;
+	inline-size: 0;
+	block-size: 1px;
+	background-color: #d59c9a;
+	content: '';
+	transition: width 0.5s;
+	-moz-transition: width 0.5s;
+	-webkit-transition: width 0.5s;
 }
 
 .header a:hover,
+.header a:hover::after,
 .header a:active,
-.header a.active {
+.header a:active::after,
+.header a.active,
+.header a.active::after {
 	color: #d59c9a;
-	text-decoration: line-through;
+	inline-size: 80px;
+}
+
+.header h1 {
+	transition: 0.5s ease-in-out;
 }
 
 .header h1:hover {
@@ -49,10 +72,17 @@
 }
 
 .badge {
-	background-color: #d59c9a;
+	background: #d59c9a;
 	color: #ffffff;
+	border: 1px solid #d59c9a;
 	border-radius: 12px;
-	padding-block: 0;
 	padding-inline: 1rem;
-	margin-inline-start: 0.5rem;
+	padding-block: 0.5rem;
+	margin-inline-start: 2rem;
+	transition: 0.5s ease-in-out;
+}
+
+.badge:hover {
+	background: #ffffff;
+	color: #d59c9a;
 }

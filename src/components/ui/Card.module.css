@@ -1,0 +1,12 @@
+.card {
+	margin: 20px;
+	position: relative;
+	overflow: hidden;
+}
+
+.card img {
+	inline-size: 100%;
+	block-size: 450px;
+	object-fit: cover;
+	border-radius: 6px;
+}
