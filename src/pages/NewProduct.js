@@ -14,7 +14,6 @@ function NewProduct() {
 
 	return (
 		<section>
-			<h1>Add new product</h1>
 			<AddProductForm onAddProduct={handleProductAdd} />
 		</section>
 	)

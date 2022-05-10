@@ -23,7 +23,6 @@ function AllProducts() {
 
 	return (
 		<section>
-			<h1>All products</h1>
 			<ProductList products={products} />
 		</section>
 	)

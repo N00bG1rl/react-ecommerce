@@ -36,8 +36,10 @@ function ProductItem({ id, image, name, price }) {
 					<RemoveIcon className={styles.removeIcon} />
 				</button>
 				<figcaption className={styles.content}>
-					<h3>{name}</h3>
-					<p>€ {price}</p>
+					<div className={styles.info}>
+						<h3>{name}</h3>
+						<p>€ {price}</p>
+					</div>
 					<button className={styles.addToCart} onClick={handleAddToCart}>
 						{itemExistsInCart ? 'Remove from cart' : 'Add to cart'}
 					</button>

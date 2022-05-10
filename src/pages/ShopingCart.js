@@ -13,12 +13,7 @@ function ShopingCart() {
 		content = <ProductList products={cartItems} />
 	}
 
-	return (
-		<section>
-			<h1>Shoping cart</h1>
-			{content}
-		</section>
-	)
+	return <section>{content}</section>
 }
 
 export default ShopingCart
