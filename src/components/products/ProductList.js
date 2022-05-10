@@ -1,5 +1,4 @@
 import ProductItem from './ProductItem'
-
 import styles from './ProductList.module.css'
 
 function ProductList(props) {

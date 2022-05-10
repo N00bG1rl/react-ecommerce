@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-
-import styles from './MainNavigation.module.css'
 import CartContext from '../../store/cart-context'
 
+import styles from './MainNavigation.module.css'
+
 function MainNavigation() {
-	const cartCtx = useContext(CartContext)
+	const { totalCartItems } = useContext(CartContext)
 
 	return (
 		<header className={styles.header}>
@@ -19,7 +19,7 @@ function MainNavigation() {
 					<li className={styles.lastNavItem}>
 						<Link to='/shoping-cart'>
 							Shoping cart
-							<small className={styles.badge}>{cartCtx.totalCartItems}</small>
+							<small className={styles.badge}>{totalCartItems}</small>
 						</Link>
 					</li>
 					<li className={styles.firstNavItem}>

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 
 import Layout from './components/layout/Layout'
-
 import AllProducts from './pages/AllProducts'
 import NewProduct from './pages/NewProduct'
 import ShopingCart from './pages/ShopingCart'
