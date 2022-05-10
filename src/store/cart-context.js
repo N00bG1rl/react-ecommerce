@@ -8,7 +8,7 @@ const CartContext = createContext({
 	itemIsInCart: handleItemIsInCart => {},
 })
 
-export function CartContextProvider(props) {
+export function CartContextProvider({ children }) {
 	const [userCartItems, setUserCartItems] = useState([])
 
 	function handleAddCartItem(cartItem) {
@@ -27,19 +27,39 @@ export function CartContextProvider(props) {
 		return userCartItems.some(item => item.id === cartItemId)
 	}
 
+	function handleIncreaseAmount(id) {
+		const newCart = [...userCartItems].map(item => {
+			return item.id === id ? { ...item, amount: item.amount + 1 } : { ...item }
+		})
+		setUserCartItems(newCart)
+	}
+
+	function handleDecreaseAmount(id, amount) {
+		if (amount === 1) {
+			handleRemoveCartItem(id)
+			return
+		} else {
+			const newCart = [...userCartItems].map(item => {
+				return item.id === id
+					? { ...item, amount: item.amount - 1 }
+					: { ...item }
+			})
+
+			setUserCartItems(newCart)
+		}
+	}
+
 	const context = {
 		cartItems: userCartItems,
 		totalCartItems: userCartItems.length,
 		addCartItem: handleAddCartItem,
 		removeCartItem: handleRemoveCartItem,
 		itemIsInCart: handleItemIsInCart,
+		decreaseAmount: handleDecreaseAmount,
+		increaseAmount: handleIncreaseAmount,
 	}
 
-	return (
-		<CartContext.Provider value={context}>
-			{props.children}
-		</CartContext.Provider>
-	)
+	return <CartContext.Provider value={context}>{children}</CartContext.Provider>
 }
 
 export default CartContext

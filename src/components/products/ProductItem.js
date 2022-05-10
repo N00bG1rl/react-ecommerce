@@ -1,18 +1,21 @@
 import { useContext } from 'react'
-import Card from '../ui/Card'
+import CartContext from '../../store/cart-context'
+import ProductContext from '../../store/products-context'
 
+import Card from '../ui/Card'
 import styles from './ProductItem.module.css'
 import { ReactComponent as RemoveIcon } from '../../assets/removeIcon.svg'
-import CartContext from '../../store/cart-context'
 
 function ProductItem({ id, image, name, price }) {
-	const cartCtx = useContext(CartContext)
+	const { removeCartItem, addCartItem, itemIsInCart } = useContext(CartContext)
+	const { deleteProduct } = useContext(ProductContext)
+	const itemExistsInCart = itemIsInCart(id)
 
-	function handleAddToCart() {
+	const handleAddToCart = () => {
 		if (itemExistsInCart) {
-			cartCtx.removeCartItem(id)
+			removeCartItem(id)
 		} else {
-			cartCtx.addCartItem({
+			addCartItem({
 				image: image,
 				id: id,
 				name: name,
@@ -21,13 +24,15 @@ function ProductItem({ id, image, name, price }) {
 		}
 	}
 
-	const itemExistsInCart = cartCtx.itemIsInCart(id)
+	const handleProductDelete = () => {
+		deleteProduct(id)
+	}
 
 	return (
 		<li className={styles.item}>
 			<Card>
 				<img src={image} alt={name} />
-				<button className={styles.removeItem}>
+				<button className={styles.removeItem} onClick={handleProductDelete}>
 					<RemoveIcon className={styles.removeIcon} />
 				</button>
 				<figcaption className={styles.content}>
